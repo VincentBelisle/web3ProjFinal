@@ -8,9 +8,9 @@ const schema = new Schema(
     "poids": {
       "type": "Number", required: true, min: 0
     },
-    "annee": {
+    "date_sortie": {
 
-      "type": "Date", required: true, max: new Date("2024-01-01")
+      "type": "Date", required: true
 
     },
     "competiteurs": [
@@ -25,12 +25,12 @@ const schema = new Schema(
       }
     ],
     "modele": {
-      "type": "String", required: true, minLength: 2, maxLength: 200
+      "type": "String", required: true, minLength: 2, maxLength: 200, unique: true
     },
     "transmission_disponible": {
       "type": [
         "String"
-      ], required: true, minLength: 1, enum: ['automatique', 'manuel','séquentielle']
+      ], required: true, minLength: 1, enum: ['automatique', 'manuelle','séquentielle']
     },
     "fabricant": {
         "type": "String", required: true, minLength: 2, maxLength: 200
