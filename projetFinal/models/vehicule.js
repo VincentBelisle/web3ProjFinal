@@ -36,7 +36,7 @@ const schema = new Schema(
         "type": "String", required: true, minLength: 2, maxLength: 200
     },
     "entrainement": {
-        "type": "enum", required: true, enum: ['propulsion arrière', 'traction avant', 'traction intégrale','4 roues motrices']
+        "type": "String", required: true, enum: ['propulsion arrière', 'traction avant', 'traction intégrale','4 roues motrices']
     },
     "chevaux": {
         "type": "Number", required: true, min: 0
@@ -45,7 +45,7 @@ const schema = new Schema(
         "type": "Number", required: true, min: 0
     },
     "type_vehicule": {
-        "type": "enum", required: true, enum: ['Camion', 'Camionnette', 'Familiale', 'VUS', 'Coupe', 'Berline', 'Hatchback']
+        "type": "String", required: true, enum: ['Camion', 'Camionnette', 'Familiale', 'VUS', 'Coupe', 'Berline', 'Hatchback']
     },
     "nombre_cylindres": {
         "type": "Number", required: true, min: 0
@@ -56,8 +56,6 @@ const schema = new Schema(
     
   }
 );
-
-
 
 module.exports = mongoose.model('Vehicule', schema);
 

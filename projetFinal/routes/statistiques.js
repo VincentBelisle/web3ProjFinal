@@ -7,7 +7,7 @@ const { default: mongoose, mongo } = require('mongoose');
 
 // Get la consommation moyenne selon le type de vehicule
 
-router.get('/consommation/type_vehicule', async (req, res) => {
+router.get('/consommation/:type_vehicule', async (req, res) => {
 
     mongoose.connect(process.env.MONGO_URL);
 
@@ -40,7 +40,7 @@ router.get('/consommation/type_vehicule', async (req, res) => {
 
 // Get le nombre de vehicule par type de vehicule
 
-router.get('/nombre/type_vehicule', async (req, res) => {
+router.get('/nombre/:type_vehicule', async (req, res) => {
 
     mongoose.connect(process.env.MONGO_URL);
 
@@ -68,6 +68,9 @@ router.get('/nombre/type_vehicule', async (req, res) => {
     }
 
 });
+
+module.exports = router;
+
 
 
 

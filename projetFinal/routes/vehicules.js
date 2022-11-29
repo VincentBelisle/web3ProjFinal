@@ -28,6 +28,7 @@ router.get('/', async (req, res) => {
 
 router.get('/modele/:modele', async (req, res) => {
 
+
     await mongoose.connect(process.env.MONGO_URL);
 
 
@@ -100,7 +101,7 @@ router.get('/type/:type_vehicule', async (req, res) => {
 
 // Get les vehicules selon leur entrainement
 
-router.get('/entrainenment/:entrainement', async (req, res) => {
+router.get('/entrainement/:entrainement', async (req, res) => {
 
 
     await mongoose.connect(process.env.MONGO_URL);
@@ -196,8 +197,6 @@ router.post('/', async (req, res) => {
     vehicule.virtual('fabricant_modele', function () {
 
         return this.fabricant + ' ' + this.modele;
-
-
 
     });
 
