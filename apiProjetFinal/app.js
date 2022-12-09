@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var vehiculesRouter = require('./routes/vehicules');
 var statistiquesRouter = require('./routes/statistiques');
+var utilsateursRouter = require('./routes/utilisateurs');
 
 var app = express();
 
@@ -18,7 +19,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/vehicules', vehiculesRouter);
 app.use('/statistiques', statistiquesRouter);
+app.use('/utilisateurs', utilsateursRouter);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+require('dotenv').config();
+
 
 
 module.exports = app;
