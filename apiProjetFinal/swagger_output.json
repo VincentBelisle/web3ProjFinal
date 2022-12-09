@@ -1,0 +1,241 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  
+  "tags": [
+    {
+      "name": "Vehicule",
+      "description": "Les routes pour les véhicules"
+    },
+    {
+      "name": "Statistiques",
+      "description": "Les routes pour les statistiques"
+    }
+  ],
+  "paths": {
+    "/vehicules/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/modele/{modele}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "modele",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/fabricant/{fabricant}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "fabricant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/type/{type_vehicule}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "type_vehicule",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/entrainement/{entrainement}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "entrainement",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/date_sortie/{date_out_gte}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "date_out_gte",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/discontinue/{discontinue}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "discontinue",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/vehicules/{vehiculeId}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "vehiculeId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Vehicule"
+        ]
+      }
+    },
+    "/statistiques/consommation/{type_vehicule}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "type_vehicule",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Statistiques"
+        ]
+      }
+    },
+    "/statistiques/nombre/{type_vehicule}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "type_vehicule",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Statistiques"
+        ]
+      }
+    }
+  }
+}
