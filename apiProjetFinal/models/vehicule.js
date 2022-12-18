@@ -22,7 +22,7 @@ const schema = new Schema({
       }
     ],
     "modele": {
-      "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200, unique: true
+      "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200, unique: [true,"Le modèle doit être unique"]
     },
     "transmission_disponible": {
       "type": [
@@ -31,6 +31,7 @@ const schema = new Schema({
         values: ['automatique', 'manuelle','séquentielle'],
         message: '{VALUE} n\'est pas une transmission valide'
     },
+  },
     "fabricant": {
         "type": "String", required: [true,"Le fabricant est requis"], minLength: 2, maxLength: 200
     },
@@ -58,10 +59,13 @@ const schema = new Schema({
     "discontinue": {
         "type": "boolean", default: false
     },
-
-  },
 }
 );
+
+schema.virtual('fabricant_modele').get(function () {
+  return this.fabricant + ' ' + this.modele;
+});
+
 
 
 

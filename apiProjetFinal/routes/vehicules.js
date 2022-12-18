@@ -7,26 +7,32 @@ const Vehicule = require('../models/vehicule');
 const { default: mongoose, mongo } = require('mongoose');
 
 
-
 // Get tous les vehicules
 
 router.get('/', async (req, res) => {
 
-    console.log(process.env.MONGO_URL);
 
     await mongoose.connect(process.env.MONGO_URL);
 
 
     try {
+
         const vehicules = await Vehicule.find();
 
         console.log(vehicules);
+
         res.json(vehicules);
+
     } catch (err) {
+
         res.json({ message: err });
+
     }
-}
-);
+
+});
+
+
+
 
 // Get un vehicule selon son id
 
@@ -62,7 +68,7 @@ router.get('/modele/:modele', async (req, res) => {
 
     try {
 
-        const vehicule = await Vehicule.findOne({ "vehicule.modele": req.params.modele });
+        const vehicule = await Vehicule.findOne({ "modele": req.params.modele });
 
         console.log(vehicule);
 
@@ -82,10 +88,9 @@ router.get('/fabricant/:fabricant', async (req, res) => {
 
     await mongoose.connect(process.env.MONGO_URL);
 
-
     try {
 
-        const vehicules = await Vehicule.find({ "vehicule.fabricant": req.params.fabricant });
+        const vehicules = await Vehicule.find({ "fabricant": req.params.fabricant });
 
         console.log(vehicules);
 
@@ -109,8 +114,7 @@ router.get('/type/:type_vehicule', async (req, res) => {
 
     try {
 
-        const vehicules = await Vehicule.find({ "vehicule.type_vehicule": req.params.type_vehicule });
-
+        const vehicules = await Vehicule.find({ "type_vehicule": req.params.type_vehicule });
 
         console.log(vehicules);
 
@@ -135,7 +139,7 @@ router.get('/entrainement/:entrainement', async (req, res) => {
 
     try {
 
-        const vehicules = await Vehicule.find({ "vehicule.entrainement": req.params.entrainement });
+        const vehicules = await Vehicule.find({ "entrainement": req.params.entrainement });
 
         console.log(vehicules);
 
@@ -158,16 +162,8 @@ router.post('/', auth, async (req, res) => {
 
     await mongoose.connect(process.env.MONGO_URL);
 
-    // Creation d'une propriete virtuelle fabricant_modele
 
-    vehicule.virtual('fabricant_modele', function () {
-
-        return this.fabricant + ' ' + this.modele;
-
-    });
-
-
-
+   
     const vehicule = new Vehicule(
 
         req.body
@@ -251,6 +247,7 @@ router.delete('/:vehiculeId', auth, async (req, res) => {
 
 
 });
+
 
 
 module.exports = router;
