@@ -14,6 +14,7 @@ export class ListeVehiculesComponent implements OnInit {
   constructor(private vehiculeService: VehiculeService) { }
 
   ngOnInit(): void {
+  
     this.getVehicules();
   }
 
@@ -21,5 +22,7 @@ export class ListeVehiculesComponent implements OnInit {
     this.vehiculeService.getVehicules()
       .subscribe(vehicules => this.vehicules = vehicules);
   }
+  
+
 
 }

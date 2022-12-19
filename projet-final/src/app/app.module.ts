@@ -12,6 +12,22 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { VehiculeService } from './vehicule.service';
 import { ListeVehiculesTypeComponent } from './liste-vehicules-type/liste-vehicules-type.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.component';
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ConnexionComponent } from './connexion/connexion.component';
+import {MatIconModule} from '@angular/material/icon';
+
+
+
+
+
 
 
 
@@ -21,7 +37,9 @@ import { ListeVehiculesTypeComponent } from './liste-vehicules-type/liste-vehicu
     EnteteComponent,
     TabsComponent,
     ListeVehiculesComponent,
-    ListeVehiculesTypeComponent
+    ListeVehiculesTypeComponent,
+    AjoutVehiculeComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +47,16 @@ import { ListeVehiculesTypeComponent } from './liste-vehicules-type/liste-vehicu
     MatTabsModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
   ],
   providers: [VehiculeService],
   bootstrap: [AppComponent]
