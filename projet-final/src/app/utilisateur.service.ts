@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utilisateur } from './utilisateur';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from './../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,12 +12,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UtilisateurService {
-  utilisateursUrl = 'http://localhost:3000/utilisateurs/connexion';
+  utilisateursUrl = environment.apiUrl + '/utilisateurs';
 
   constructor(private http: HttpClient) { }
 
   connexionUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.post<Utilisateur>(this.utilisateursUrl, utilisateur, httpOptions);
+    return this.http.post<Utilisateur>(this.utilisateursUrl + '/connexion', utilisateur, httpOptions);
   }
 
 }

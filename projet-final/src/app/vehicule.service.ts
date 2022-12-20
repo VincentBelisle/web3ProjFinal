@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Vehicule } from './vehicule';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from './../environments/environment';
+
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehiculeService {
-  vehiculesUrl = 'http://localhost:3000/vehicules';
+  vehiculesUrl = environment.apiUrl + '/vehicules';
 
   vehicles$: BehaviorSubject<Vehicule[]> = new BehaviorSubject<Vehicule[]>([]);
 
