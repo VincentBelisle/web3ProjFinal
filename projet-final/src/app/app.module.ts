@@ -23,6 +23,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConnexionComponent } from './connexion/connexion.component';
 import {MatIconModule} from '@angular/material/icon';
+import { StatistiquesComponent } from './statistiques/statistiques.component';
+import {MatSortModule} from '@angular/material/sort';
+
 
 
 
@@ -39,7 +42,8 @@ import {MatIconModule} from '@angular/material/icon';
     ListeVehiculesComponent,
     ListeVehiculesTypeComponent,
     AjoutVehiculeComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    StatistiquesComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    MatSortModule
   ],
   providers: [VehiculeService],
   bootstrap: [AppComponent]

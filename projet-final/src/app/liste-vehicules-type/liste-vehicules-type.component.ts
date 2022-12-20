@@ -60,6 +60,7 @@ export class ListeVehiculesTypeComponent implements OnInit {
 
 
     this.vehiculeService.getVehiculesParFabricant(fabricant)
+    .subscribe(vehicules => this.vehicules = vehicules);
   }
 
   deleteVehicle(_id?: string): void {

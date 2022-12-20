@@ -4,11 +4,6 @@ import { Vehicule } from './vehicule';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -84,8 +79,6 @@ export class VehiculeService {
     const url = `${this.vehiculesUrl}/entrainement/${entrainement}`;
     return this.http.get<Vehicule[]>(url)
   }
-  
-
 
   
 

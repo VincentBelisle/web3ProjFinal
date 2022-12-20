@@ -5,30 +5,33 @@ const Vehicule = require('../models/vehicule');
 const { default: mongoose, mongo } = require('mongoose');
 
 
-// Get la consommation moyenne selon le type de vehicule
+// Get la consommation moyenne par type de vehicule
 
-router.get('/consommation/:type_vehicule', async (req, res) => {
+router.get('/consommation_moyenne', async (req, res) => {
 
-    mongoose.connect(process.env.MONGO_URL);
-
+    await mongoose.connect(process.env.MONGO_URL);
 
     try {
 
-        const consommation_moyenne = await Vehicule.aggregate(
+        const consommation_moyenne = await Vehicule.aggregate([
 
-            [
+            {
 
-                { $group: { _id: '$type_vehicule', consommation_moyenne : {$avg: '$consommation_moyenne' } },
+                $group: {
+
+                    _id: "$type_vehicule",
+
+                    consommation_moyenne: { $avg: "$consommation_moyenne" },
 
                 },
 
-            ]
+            },
 
-        );
+        ]);
 
-        console.log(consommation_moyenne);
 
         res.json(consommation_moyenne);
+
 
     } catch (err) {
 
@@ -38,34 +41,30 @@ router.get('/consommation/:type_vehicule', async (req, res) => {
 
 });
 
+
+
 // Get le nombre de vehicule par type de vehicule
 
-router.get('/nombre/:type_vehicule', async (req, res) => {
+router.get('/nombre_vehicules', async (req, res) => {
 
-    mongoose.connect(process.env.MONGO_URL);
-
+    await mongoose.connect(process.env.MONGO_URL);
 
     try {
+        const nombre_vehicules = await Vehicule.aggregate([
+          
+          {
+            $group: {
+              _id: "$type_vehicule",
+              nombre_vehicules: { $sum: 1 },
+            },
+          },
+        ]);
+    
+        res.json(nombre_vehicules);
 
-        const nombre_vehicule = await Vehicule.aggregate(
-
-            [
-
-                { $group: { _id: '$type_vehicule', nombre_vehicules : { $sum: 1} } }
-
-            ]
-
-        );
-
-        console.log(nombre_vehicule);
-
-        res.json(nombre_vehicule);
-
-    } catch (err) {
-
+      } catch (err) {
         res.json({ message: err });
-
-    }
+      }
 
 });
 

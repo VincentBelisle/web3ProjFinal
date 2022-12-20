@@ -29,7 +29,6 @@ export class ConnexionComponent implements OnInit {
     // a chaque 30 minutes, on supprime le token et rafraichit la page
     setInterval(() => {
       localStorage.removeItem('token');
-      localStorage.removeItem('tokenTime');
       window.location.reload();
     }, 1800000);
 
