@@ -3,6 +3,7 @@ import { Observable} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConsommationMoyenne } from './consommation-moyenne';
 import { NombreVehicule } from './nombre-vehicule';
+import { environment } from './../environments/environment';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { NombreVehicule } from './nombre-vehicule';
 })
 export class StatistiquesService {
 
-  statistiquesUrl = 'http://localhost:3000/statistiques';
+  statistiquesUrl = environment.apiUrl + '/statistiques';
 
   constructor(private http:HttpClient) { }
 

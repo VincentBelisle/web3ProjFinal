@@ -24,6 +24,7 @@ export class ListeVehiculesTypeComponent implements OnInit {
   token : string = '';
 
 
+
   constructor(private vehiculeService: VehiculeService) { }
 
 
