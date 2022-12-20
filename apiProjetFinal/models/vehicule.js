@@ -72,6 +72,11 @@ schema.virtual('fabricant_modele').get(function () {
   return this.fabricant + ' ' + this.modele;
 });
 
+schema.virtual('date_sortie_format').get(function () {
+  return this.date_sortie.toISOString().substring(0, 10);
+});
+
+
 
 
 
