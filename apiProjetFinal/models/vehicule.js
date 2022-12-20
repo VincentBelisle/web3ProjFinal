@@ -7,14 +7,19 @@ const schema = new Schema({
     },
     "date_sortie": {
 
-      "type": "Date", required: [true,"La date de sortie est requise"], min: "1900-01-01", max: "2100-01-01"
+      "type": "Date", required: [true,"La date de sortie est requise"], min: "1900-01-01", max: "2022-31-31"
 
     },
     "competiteurs": [
       {
         _id: false,
         "fabricant": {
-          "type": "String", required: [true,"Le fabricant est requis"], minLength: 2, maxLength: 200
+          "type": "String", required: [true,"Le fabricant est requis"], minLength: 2, maxLength: 200, validator: function (value){
+            // la valeur ne doit pas contenir de chiffres
+            return !/\d/.test(value);
+          },
+      
+
         },
         "modele": {
           "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200
@@ -22,7 +27,7 @@ const schema = new Schema({
       }
     ],
     "modele": {
-      "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200, unique: true
+      "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200,
     },
     "transmission_disponible": {
       "type": [
@@ -31,6 +36,7 @@ const schema = new Schema({
         values: ['automatique', 'manuelle','séquentielle'],
         message: '{VALUE} n\'est pas une transmission valide'
     },
+  },
     "fabricant": {
         "type": "String", required: [true,"Le fabricant est requis"], minLength: 2, maxLength: 200
     },
@@ -53,15 +59,18 @@ const schema = new Schema({
         }
     },
     "nombre_cylindres": {
-        "type": "Number", required: [true,"Le nombre de cylindres est requis"], min: [0,"Le nombre de cylindres doit être supérieur à 0"]
+        "type": "Number", required: [true,"Le nombre de cylindres est requis"], min: [0,"Le nombre de cylindres doit être supérieur ou égal à 0"], max: [16,"Le nombre de cylindres doit être inférieur ou égal à 16"]
     },
     "discontinue": {
         "type": "boolean", default: false
     },
-
-  },
 }
 );
+
+schema.virtual('fabricant_modele').get(function () {
+  return this.fabricant + ' ' + this.modele;
+});
+
 
 
 
