@@ -28,6 +28,7 @@ const schema = new Schema({
     ],
     "modele": {
       "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200,
+
     },
     "transmission_disponible": {
       "type": [
