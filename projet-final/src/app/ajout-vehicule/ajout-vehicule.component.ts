@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Vehicule } from '../vehicule';
 import { VehiculeService } from '../vehicule.service';
-import { Utilisateur } from '../utilisateur';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ajout-vehicule',
@@ -11,14 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AjoutVehiculeComponent implements OnInit {
 
-  utilisateur: Utilisateur = {
-    email: '',
-    password: ''
-  }
-
   token: string = '';
-
-  tokenTime: string = '';
 
   showForm: boolean = false;
 
