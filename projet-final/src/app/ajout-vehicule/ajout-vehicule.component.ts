@@ -29,9 +29,7 @@ export class AjoutVehiculeComponent implements OnInit {
     discontinue: false,
     transmission_disponible: [],
 
-  }
-
-
+  };
 
   types = ['VUS', 'Coupe', 'Familiale'];
 

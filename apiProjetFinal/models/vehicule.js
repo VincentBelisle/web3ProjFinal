@@ -7,7 +7,7 @@ const schema = new Schema({
     },
     "date_sortie": {
 
-      "type": "Date", required: [true,"La date de sortie est requise"], min: "1900-01-01", max: "2022-31-31"
+      "type": "Date", required: [true,"La date de sortie est requise"], min: "1900-01-01", max: "2023-12-31"
 
     },
     "competiteurs": [

@@ -29,16 +29,23 @@ export class VehiculeService {
 
   }
 
+  getVehiculeParId(_id: string): Observable<Vehicule> {
+    const url = `${this.vehiculesUrl}/${_id}`;
+    return this.http.get<Vehicule>(url)
+  }
+
+
   ajoutVehicule(vehicule: Vehicule, token: string): Observable<Vehicule> {
     const headers = new HttpHeaders().set('x-access-token', token);
+
+    console.log(vehicule.date_sortie);
+
+
     return this.http.post<Vehicule>(this.vehiculesUrl, vehicule, { headers })
     .pipe(
       tap(() => {
-
         // Ajoute le véhicule à la liste des véhicules
         const vehicles = this.vehicles$.value;
-        console.log(vehicles);
-        console.log(vehicule);
         vehicles.push(vehicule);
         this.vehicles$.next(vehicles);
       })
@@ -60,7 +67,19 @@ export class VehiculeService {
         const index = vehicles.findIndex(vehicule => vehicule._id === _id);
         vehicles.splice(index, 1);
         this.vehicles$.next(vehicles);
+        console.log(this.vehicles$);
         
+      })
+    );
+  }
+
+  modifierVehicule(_id: string,vehicule: Vehicule, token: string): Observable<Vehicule> {
+    const url = `${this.vehiculesUrl}/${_id}`;
+    const headers = new HttpHeaders().set('x-access-token', token);
+    return this.http.put<Vehicule>(url, vehicule, { headers })
+    .pipe(
+      tap(() => {
+        this.getVehicules();
       })
     );
   }

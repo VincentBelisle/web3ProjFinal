@@ -162,6 +162,8 @@ router.post('/', auth, async (req, res) => {
 
     await mongoose.connect(process.env.MONGO_URL);
 
+    console.log(req.body);
+
 
    
     const vehicule = new Vehicule(
@@ -194,36 +196,21 @@ router.post('/', auth, async (req, res) => {
 // Modifier un vehicule 
 
 router.put('/:vehiculeId', auth, async (req, res) => {
-
-
-    await mongoose.connect(process.env.MONGO_URL);
-
-
     try {
-
-
-        const updatedVehicule = await Vehicule.updateOne(
-
-            { _id: req.params.vehiculeId },
-
-            { $set: { vehicule: req.body } }
-
-        )
-
-
-        res.json(updatedVehicule);
-
-
+      await mongoose.connect(process.env.MONGO_URL);
+  
+      const updatedVehicule = await Vehicule.findByIdAndUpdate(
+        req.params.vehiculeId,
+        { $set: req.body },
+        { new: true }
+      );
+  
+      res.json(updatedVehicule);
     } catch (err) {
-
-
-        res.json({ message: err });
-
-
+      res.json({ message: err });
     }
-
-
-});
+  });
+  
 
 // Supprimer un vehicule selon son id
 
