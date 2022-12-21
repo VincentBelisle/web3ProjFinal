@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Vehicule } from '../vehicule';
 import { VehiculeService } from '../vehicule.service';
 import { Utilisateur } from '../utilisateur';
-import { UtilisateurService } from '../utilisateur.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ajout-vehicule',
@@ -40,11 +40,17 @@ export class AjoutVehiculeComponent implements OnInit {
 
   }
 
+
+
   types = ['VUS', 'Coupe', 'Familiale'];
+
   transmissions = ['automatique', 'manuelle', 'séquentielle'];
+
   drives = ['propulsion arrière', 'traction avant', 'traction intégrale', '4 roues motrices'];
 
-  constructor(private vehiculeService: VehiculeService) { }
+  constructor(private vehiculeService: VehiculeService) { 
+
+  }
 
 
   ngOnInit(): void {

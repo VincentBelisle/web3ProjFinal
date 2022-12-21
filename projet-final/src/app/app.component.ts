@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Vehicule } from './vehicule';
 import { VehiculeService } from './vehicule.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,12 @@ export class AppComponent {
 
   vehicules: Vehicule[] = [];
 
-  constructor(private vehiculeService: VehiculeService) { }
+  constructor(private vehiculeService: VehiculeService, private titleService: Title) { 
+
+    this.titleService.setTitle($localize`${this.title}`);
+
+  }
+  
 
   ngOnInit(): void {
     this.getVehicules();

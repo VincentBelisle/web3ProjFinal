@@ -13,4 +13,6 @@ export interface ExampleTab {
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent {
+
+
 }
