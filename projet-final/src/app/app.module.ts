@@ -25,6 +25,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import {MatIconModule} from '@angular/material/icon';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import {MatSortModule} from '@angular/material/sort';
+import { ModifierVehiculeComponent } from './modifier-vehicule/modifier-vehicule.component';
 
 
 
@@ -43,7 +44,8 @@ import {MatSortModule} from '@angular/material/sort';
     ListeVehiculesTypeComponent,
     AjoutVehiculeComponent,
     ConnexionComponent,
-    StatistiquesComponent
+    StatistiquesComponent,
+    ModifierVehiculeComponent
   ],
   imports: [
     BrowserModule,

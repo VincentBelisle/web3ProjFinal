@@ -19,7 +19,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "localize": [
-              "en-US"
+              "fr-CA"
             ],
             "outputPath": "dist/projet-final",
             "index": "src/index.html",
