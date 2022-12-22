@@ -14,15 +14,14 @@ export class ListeVehiculesComponent implements OnInit {
   constructor(private vehiculeService: VehiculeService) { }
 
   ngOnInit(): void {
-  
+
     this.getVehicules();
   }
 
   getVehicules(): void {
-    this.vehiculeService.getVehicules()
-      .subscribe(vehicules => this.vehicules = vehicules);
+    this.vehiculeService.vehicles$.subscribe(vehicles => {
+      this.vehicules = vehicles;
+    });
+
   }
-  
-
-
 }

@@ -79,7 +79,12 @@ export class VehiculeService {
     return this.http.put<Vehicule>(url, vehicule, { headers })
     .pipe(
       tap(() => {
-        this.getVehicules();
+        // Modifie le véhicule de la liste des véhicules
+        const vehicles = this.vehicles$.value;
+        const index = vehicles.findIndex(vehicule => vehicule._id === _id);
+        vehicles[index] = vehicule;
+        this.vehicles$.next(vehicles);
+        
       })
     );
   }
