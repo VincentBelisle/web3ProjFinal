@@ -3,25 +3,19 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
-
 const Utilisateur = require('../models/utilisateur');
 const { default: mongoose, mongo } = require('mongoose');
-
 
 // S'inscrire
 
 router.post("/inscription", async (req, res) => {
-    
-
- try {
-
+  try {
     await mongoose.connect(process.env.MONGO_URL);
 
     const { email, password } = req.body;
 
     if (!(email && password)) {
-      res.status(400).send("Tous les champs sont requis");
+      return res.status(400).send("Tous les champs sont requis");
     }
 
     const oldUtilisateur = await Utilisateur.findOne({ email });
@@ -30,7 +24,7 @@ router.post("/inscription", async (req, res) => {
       return res.status(409).send("L'utilisateur existe déjà. Veuillez vous connecter");
     }
 
-    encryptedPassword = await bcrypt.hash(password, 10);
+    const encryptedPassword = await bcrypt.hash(password, 10);
 
     const utilisateur = await Utilisateur.create({
       email: email.toLowerCase(), // sanitize: convert email to lowercase
@@ -52,24 +46,19 @@ router.post("/inscription", async (req, res) => {
   }
 });
 
-
-
 // Se connecter
 
 router.post("/connexion", async (req, res) => {
-
   try {
-
     await mongoose.connect(process.env.MONGO_URL);
     const { email, password } = req.body;
 
     if (!(email && password)) {
-      res.status(400).send("Tous les champs sont requis");
+      return res.status(400).send("Tous les champs sont requis");
     }
     const utilisateur = await Utilisateur.findOne({ email });
 
     if (utilisateur && (await bcrypt.compare(password, utilisateur.password))) {
-
       const token = jwt.sign(
         { utilisateur_id: utilisateur._id, email },
         process.env.TOKEN_KEY,
@@ -81,19 +70,12 @@ router.post("/connexion", async (req, res) => {
       utilisateur.token = token;
 
       res.status(200).json(utilisateur);
+    } else {
+      return res.status(400).send("Identifiants invalides");
     }
-    res.status(400).send("Identifiants invalides");
   } catch (err) {
     console.log(err);
   }
-  
 });
 
 module.exports = router;
-
-
-
-
-
-
-
