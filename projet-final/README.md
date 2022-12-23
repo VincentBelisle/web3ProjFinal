@@ -1,6 +1,21 @@
+
+# Gestion de véhicules
+
+Page angular permettant la gestion de véhicules,
+
+Ajout, modification et suppression de véhicules.
+
+Affichage de véhicules avec et sans filtres.
+
+Section statistiques.
+
+Utilise un api Express en node.
+
+
+
 # ProjetFinal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6
 
 ## Development server
 
