@@ -11,6 +11,16 @@ Section statistiques.
 
 Utilise un api Express en node.
 
+# Informations de connexion
+
+Pour se connecter, il faut utiliser les identifiants suivants :
+
+Courriel : 123@gmail.com
+Mot de passe : 123456
+
+# Application en ligne
+
+Application en ligne à l'adresse suivante : https://vincentbelisle.github.io/angular-proj-final/
 
 
 # ProjetFinal
