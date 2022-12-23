@@ -7,14 +7,14 @@ const schema = new Schema({
     },
     "date_sortie": {
 
-      "type": "Date", required: [true,"La date de sortie est requise"], min: "1900-01-01", max: "2023-12-31"
+      "type": "Date", required: [true,"La date de sortie est requise"], min: ["1900-01-01","La date ne peut être inférieur à 1900-01-01"], max: ["2023-12-31","La date ne peut être supérieur à 2023-12-31"]
 
     },
     "competiteurs": [
       {
         _id: false,
         "fabricant": {
-          "type": "String", required: [true,"Le fabricant est requis"], minLength: 2, maxLength: 200, validator: function (value){
+          "type": "String", required: [true,"Le fabricant est requis"], minLength: [2,"Le champs doit contenir un minimum de 2 caractères"], maxLength: [200,"Le champ peut contenir plus de 200 caractères"], validator: function (value){
             // la valeur ne doit pas contenir de chiffres
             return !/\d/.test(value);
           },
@@ -22,12 +22,12 @@ const schema = new Schema({
 
         },
         "modele": {
-          "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200
+          "type": "String", required: [true,"Le modèle est requis"], minLength: [2,"Le champ doit contenir un minimum de 2 caractères"], maxLength: [200,"Le champ peut contenir plus de 200 caractères"]
         }
       }
     ],
     "modele": {
-      "type": "String", required: [true,"Le modèle est requis"], minLength: 2, maxLength: 200,
+      "type": "String", required: [true,"Le modèle est requis"], minLength: [2,"Le champ doit contenir un minimum de 2 caractères"], maxLength: [200,"Le champ peut contenir plus de 200 caractères"]
 
     },
     "transmission_disponible": {
@@ -39,7 +39,7 @@ const schema = new Schema({
     },
   },
     "fabricant": {
-        "type": "String", required: [true,"Le fabricant est requis"], minLength: 2, maxLength: 200
+        "type": "String", required: [true,"Le fabricant est requis"], minLength: [2,"Le champ doit contenir un minimum de 2 caractères"], maxLength: [200,"Le champ peut contenir plus de 200 caractères"]
     },
     "entrainement": {
         "type": "String", required: true, enum: {

@@ -5,20 +5,23 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
+  "host": "https://devweb3apifinal.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
   ],
-  
   "tags": [
     {
-      "name": "Vehicule",
-      "description": "Les routes pour les véhicules"
+      "name": "vehicules",
+      "description": "Routes pour les véhicules"
     },
     {
-      "name": "Statistiques",
-      "description": "Les routes pour les statistiques"
+      "name": "statistiques",
+      "description": "Routes pour les statistiques"
+    },
+    {
+      "name": "utilisateurs",
+      "description": "Routes pour les utilisateurs"
     }
   ],
   "paths": {
@@ -32,19 +35,116 @@
           }
         },
         "tags": [
-          "Vehicule"
+          "vehicules"
         ]
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "tags": [
+          "vehicules"
+        ]
+      }
+    },
+    "/vehicules/{vehiculeId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "vehiculeId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           }
         },
         "tags": [
-          "Vehicule"
+          "vehicules"
+        ]
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "vehiculeId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "tags": [
+          "vehicules"
         ]
       }
     },
@@ -65,7 +165,7 @@
           }
         },
         "tags": [
-          "Vehicule"
+          "vehicules"
         ]
       }
     },
@@ -86,7 +186,7 @@
           }
         },
         "tags": [
-          "Vehicule"
+          "vehicules"
         ]
       }
     },
@@ -107,7 +207,7 @@
           }
         },
         "tags": [
-          "Vehicule"
+          "vehicules"
         ]
       }
     },
@@ -128,112 +228,104 @@
           }
         },
         "tags": [
-          "Vehicule"
+          "vehicules"
         ]
       }
     },
-    "/vehicules/date_sortie/{date_out_gte}": {
+    "/statistiques/consommation_moyenne": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "date_out_gte",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
         },
         "tags": [
-          "Vehicule"
+          "statistiques"
         ]
       }
     },
-    "/vehicules/discontinue/{discontinue}": {
+    "/statistiques/nombre_vehicules": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "discontinue",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
         },
         "tags": [
-          "Vehicule"
+          "statistiques"
         ]
       }
     },
-    "/vehicules/{vehiculeId}": {
-      "put": {
+    "/utilisateurs/inscription": {
+      "post": {
         "description": "",
         "parameters": [
           {
-            "name": "vehiculeId",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict"
           }
         },
         "tags": [
-          "Vehicule"
+          "utilisateurs"
         ]
       }
     },
-    "/statistiques/consommation/{type_vehicule}": {
-      "get": {
+    "/utilisateurs/connexion": {
+      "post": {
         "description": "",
         "parameters": [
           {
-            "name": "type_vehicule",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         },
         "tags": [
-          "Statistiques"
-        ]
-      }
-    },
-    "/statistiques/nombre/{type_vehicule}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "type_vehicule",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "tags": [
-          "Statistiques"
+          "utilisateurs"
         ]
       }
     }

@@ -19,12 +19,19 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/vehicules', vehiculesRouter);
 app.use('/statistiques', statistiquesRouter);
 app.use('/utilisateurs', utilisateursRouter);
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+// Swagger sur la page d'accueil
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 require('dotenv').config();
 
